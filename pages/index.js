@@ -17,13 +17,22 @@ export default function Home() {
   const paint = (xPos, yPos) => {
     //copy from old 2d Array
     const newPixels = CanvasLib.copyCanvas(pixels);
+    newPixels[xPos][yPos]  =selColor;
+    setPixels (newPixels);
     //your code here
   };
 
   const clear = () => {
     //your code here
     //Hint : use CanvasLib.createEmptyCanvas()
+    const newPixels = CanvasLib.createEmptyCanvas();
+    setPixels(newPixels);
   };
+  
+  const random = () => {
+    const newPixels = CanvasLib.createRandomCanvas();
+    setPixels(newPixels);
+  }
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "GhostWhite" }}>
@@ -36,7 +45,7 @@ export default function Home() {
           <button className="btn btn-dark" onClick={clear}>
             Clear
           </button>
-          <button className="btn btn-dark">Random Color</button>
+          <button className="btn btn-dark" onClick={random}>Random Color</button>
         </div>
       </PainterContext.Provider>
     </div>
